@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Reservierung</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Hintergrundvideo */
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            filter: brightness(50%) blur(2px);
+        }
+
+        /* Overlay für Inhalt */
+        .content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            color: white;
+            text-align: center;
+        }
+
+        img {
+            display: block;
+            margin: 0 auto 20px auto; /* Zentriert das Bild und fügt Abstand ein */
+        width: 150px; /* Größe des Logos */
+}
+
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            margin-top:1rem;
+        }
+
+        form {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        input, textarea, button {
+            width: 100%;
+            padding: 0.8rem;
+            margin-top: 0.5rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        button {
+            background: #4CAF50;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            form {
+                padding: 1.5rem;
+            }
+            #map-container {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+    #map-container iframe {
+    border: 0;
+    width: 100%;
+    height: 450px;
+    position:
+}
+
+        }
+    </style>
+</head>
+<body>
+<!-- Hintergrundvideo -->
+<video class="background-video" autoplay muted loop>
+    <source src="pizzahintergrund.mp4" type="video/mp4">
+     Browser unterstützt kein HTML5-Video.
+</video>
+
+<!-- Inhalt -->
+<div class="content">
+    <div>
+
+        <form th:action="@{/reservations}" th:object="${reservation}" method="post">
+           <a href="reservation-form.html"> <img src="/Mini perle.png" alt="Logo"></a>
+            <h1>Reservierung</h1>
+            <label>Name:
+                <input type="text" th:field="*{name}" required />
+            </label>
+            <label>E-Mail:
+                <input type="email" th:field="*{email}" required />
+            </label>
+            <label>Telefon:
+                <input type="tel" th:field="*{phone}" />
+            </label>
+            <label>Datum:
+                <input type="datetime-local" th:field="*{reservationDate}" required />
+            </label>
+            <label>Nachricht:
+                <textarea th:field="*{message}"></textarea>
+            </label>
+            <button type="submit">Reservieren</button>
+            <p></p>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2427.0990342938676!2d13.34666727659934!3d52.53164233536761!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a851758d084695%3A0xecfe3093b41f6c13!2sMini-Perle%20Berlin!5e0!3m2!1sde!2sde!4v1736859782684!5m2!1sde!2sde"
+                    width="400" height="70" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+        </form>
+
+    </div>
+</div>
+</body>
+</html>

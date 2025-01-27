@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Reservierungsbestätigung</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f9f9f9;
+        margin: 0;
+        padding: 20px;
+    }
+    .container {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        max-width: 500px;
+        margin: auto;
+        padding: 20px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>Reservierung erfolgreich!</h1>
+  <p>Vielen Dank für Ihre Reservierung, <strong th:text="${reservation.name}"></strong>.</p>
+  <p>Wir freuen uns darauf, Sie am <strong th:text="${reservation.reservationDate}"></strong> begrüßen zu dürfen.</p>
+
+  <p>Eine Bestätigung wurde an Ihre E-Mail-Adresse gesendet.</p>
+</div>
+</body>
+</html>
